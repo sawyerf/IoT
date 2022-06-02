@@ -8,3 +8,4 @@ Introduction to kubernetes.
 - [Vagrant doc pdf](https://linuxacademy.com/site-content/uploads/2017/12/vagrant-cheatsheet-Linux-Academy.pdf)
 - [k3s doc](https://www.invivoo.com/k3s-kubernetes-enfin-ultra-simpl-leger-devoxx/)
 - [Official Install k3s](https://rancher.com/docs/k3s/latest/en/quick-start/)
+- [Configure k3s](https://rancher.com/docs/k3s/latest/en/advanced/)

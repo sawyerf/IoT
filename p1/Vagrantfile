@@ -1,22 +1,23 @@
 Vagrant.configure("2") do |config|
-    config.vm.box = "centos/8"
+    config.vm.box = "centos/7" # Plus facile avec centos/7 nike la version 8
     
     config.vm.define "vsaltelS" do |control|
         config.vm.hostname = "vsaltelS"
         config.vm.network "private_network", ip: "192.168.42.110"
+        # config.vm.network "forwarded_port", id: "ssh", host: 54321, guest: 22
         config.vm.provider "virtualbox" do |vb|
             vb.memory = "1024"
             vb.cpus = "1"
         end
         control.vm.provision :shell, path: "scripts/install_server.sh"
     end
-    # config.vm.define "vsaltelSW" do |control|
-    #     control.vm.hostname = "vsaltelSW"
-    #     config.vm.network "private_network", ip: "192.168.42.111"
-    #     config.vm.provider "virtualbox" do |vb|
-    #         vb.memory = "1024"
-    #         vb.cpus = "1"
-    #     end
-    #     control.vm.provision :shell, path: "scripts/install_serverWorker.sh"
-    # end
+    config.vm.define "vsaltelSW" do |control|
+        control.vm.hostname = "vsaltelSW"
+        config.vm.network "private_network", ip: "192.168.42.111"
+        config.vm.provider "virtualbox" do |vb|
+            vb.memory = "1024"
+            vb.cpus = "1"
+        end
+        control.vm.provision :shell, path: "scripts/install_serverWorker.sh"
+    end
 end
