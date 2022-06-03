@@ -1,0 +1,61 @@
+app-two.yml  index.html  sudoers
+[root@vsaltelS app2]# cat app-two.yml
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-two
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  rules:
+  - host: app2.com
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-two
+            port:
+              number: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-two-service
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    app:  app-two
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-two-nginx
+spec:
+  selector:
+    matchLabels:
+      app: app-two
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app-two
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: app-two-volume
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: app-two-volume
+        configMap:
+          name: app-two
