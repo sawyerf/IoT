@@ -5,4 +5,5 @@
 # sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 # yum update -y
 # cd -
-curl -sfL https://get.k3s.io | sh -
+curl -sfL https://get.k3s.io | sh -s - server --flannel-iface=eth1
+sudo cat /var/lib/rancher/k3s/server/node-token
