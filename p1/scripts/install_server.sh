@@ -6,4 +6,5 @@
 # yum update -y
 # cd -
 curl -sfL https://get.k3s.io | sh -s - server --flannel-iface=eth1
-sudo cat /var/lib/rancher/k3s/server/node-token
+sudo cp /var/lib/rancher/k3s/server/node-token /vagrant_shared/node-token
+sudo yum install -y net-tools
