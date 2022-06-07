@@ -433,3 +433,4 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/vagrant,visualstudiocode,visualstudio
 shared
+*.swp
