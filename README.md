@@ -1,5 +1,14 @@
-# Inception-of-Things
+# ☸️ Inception-of-Things
 Introduction to kubernetes.
+
+## Command
+```
+sudo /usr/bin/kubectl get nodes
+```
+
+```
+sudo /usr/bin/kubectl get all
+```
 
 ## Links
 - [Introduction a K3S (fr)](https://blog.wescale.fr/k3s-le-kubernetes-allege-hautement-disponible/)
