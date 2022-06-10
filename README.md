@@ -8,6 +8,9 @@ Kubernetes est un système open source qui vise à fournir une « plate-forme pe
 ### K3s
 K3s est la version legere de kubernetes (k8s) avec moins de dépendances et un installation plus rapide.
 
+### K3d
+Ca permet de lancer k3s dans des dockers. Ce qui facilite la creation de plusieurs nodes (workers) en local. 
+
 ### Nodes
 *nodes = worker*
 
@@ -28,6 +31,9 @@ C'est se qui permet d'isoler un cluster dans un sous-cluster. Utile quand on a p
 
 ### Ingress
 C'est se qui gere l'accees exterieur au service.
+
+### ArgoCD
+C'est un outil de déploiement continu ("continuous deployment") qui permet de deployer des systeme kubenetes a partir de git.
 
 ![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fgoglides.io%2Fwp-content%2Fuploads%2F2020%2F06%2F01-kubernetes-diagram.png%3Fssl%3D1&f=1&nofb=1)
 
