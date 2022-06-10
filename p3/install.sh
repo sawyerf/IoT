@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Install ssh
 apt update
 yes | apt install openssh-server
 service ssh start
@@ -25,3 +24,12 @@ service docker start
 # Install Argo-CD
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.3.4/manifests/install.yaml
+# Install argocd Client
+curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+chmod +x /usr/local/bin/argocd
+
+# Je sais ap
+# kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+# kubectl port-forward svc/argocd-server -n argocd 8080:443 --address 0.0.0.0
+# argocd login localhost:8080
+# kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
