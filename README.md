@@ -1,7 +1,12 @@
 # ☸️ Inception-of-Things
-Introduction to kubernetes.
+This project aims to introduce you to kubernetes from a developer perspective. You will have to set up small clusters and discover the mechanics of continuous integration. At the end of this project you will be able to have a working cluster in docker and have a usable continuous integration for your applications. 
 
-## Docs
+## 🤝 Team
+- [Lmoulin](https://github.com/lucasmln)
+- [Sawyerf](https://github.com/sawyerf)
+- [Vsaltel](https://github.com/vsaltel)
+
+## 📚 Docs
 ### Kubernetes
 Kubernetes est un système open source qui vise à fournir une « plate-forme permettant d'automatiser le déploiement, la montée en charge et la mise en œuvre de conteneurs d'application sur des clusters de serveurs ».
 
@@ -37,7 +42,7 @@ C'est un outil de déploiement continu ("continuous deployment") qui permet de d
 
 ![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fgoglides.io%2Fwp-content%2Fuploads%2F2020%2F06%2F01-kubernetes-diagram.png%3Fssl%3D1&f=1&nofb=1)
 
-## Command
+## 💲 Command
 ```
 sudo /usr/bin/kubectl get nodes
 ```
@@ -46,7 +51,7 @@ sudo /usr/bin/kubectl get nodes
 sudo /usr/bin/kubectl get all
 ```
 
-## Links
+## 🔗 Links
 - [Introduction a K3S (fr)](https://blog.wescale.fr/k3s-le-kubernetes-allege-hautement-disponible/)
 - [Red Hat - C'est quoi Kubernetes ?](https://www.redhat.com/fr/topics/containers/what-is-kubernetes)
 - [Vagrant Centos/8](https://app.vagrantup.com/centos/boxes/8)
