@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: playground-v1
+  name: playground
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: playground-v1
+      app: playground
   template:
     metadata:
       labels:
-        app: playground-v1
+        app: playground
     spec:
       containers:
-      - image: wil42/playground:v1
-        name: payground-v1
+      - image: wil42/playground:v2
+        name: playground
         ports:
-        - containerPort: 80
+        - containerPort: 8888
