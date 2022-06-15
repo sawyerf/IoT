@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: gitlab
+spec:
+  containers:
+    - name: gitlab
+      image: gitlab/gitlab-ee:latest
+      ports:
+        - containerPort: 443
+        - containerPort: 80
+      volumeMounts:
+        - name: config-vol
+          mountPath: /etc/config
+        - name: logs-vol
+          mountPath: /var/log/gitlab
+        - name: data-vol
+          mountPath: /var/opt/gitlab
+      restartPolicy: always
+  volumes:
+    - name: config-vol
+      hostPath:
+        path: /srv/gitlab/config
+    - name: config-vol
+      hostPath:
+        path: /srv/gitlab/logs
+    - name: config-vol
+      hostPath:
+        path: /srv/gitlab/data
