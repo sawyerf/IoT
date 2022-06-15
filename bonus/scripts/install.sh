@@ -1,22 +1,31 @@
 #!/bin/bash
 
-# Install helm
-curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-chmod 700 /tmp/get_helm.sh
-/tmp/get_helm.sh
-# Fix  localhost:8080 unreachable
-kubectl config view --raw > ~/.kube/config
+# Server Worker
+curl -sfL https://get.k3s.io | K3S_URL=https://192.168.1.197:6443 K3S_TOKEN=`cat /vagrant_shared/node-token` sh -s - --flannel-iface=eth1
+# Install docker
+apt update
+yes | apt install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt update
+yes | apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+service docker start
 # Install gitlab
-export GITLAB_HOME=/srv/gitlab
-mkdir -p $GITLAB_HOME
-sudo docker run --detach \
-  --hostname 192.168.1.197 \
-  --publish 443:443 --publish 80:80 \
-  --name gitlab \
-  --restart always \
-  --volume $GITLAB_HOME/config:/etc/gitlab \
-  --volume $GITLAB_HOME/logs:/var/log/gitlab \
-  --volume $GITLAB_HOME/data:/var/opt/gitlab \
-  --shm-size 256m \
-  gitlab/gitlab-ee:latest
+# export GITLAB_HOME=/srv/gitlab
+# mkdir -p $GITLAB_HOME
+# sudo docker run --detach \
+#   --hostname 192.168.1.197 \
+#   --publish 443:443 --publish 80:80 \
+#   --name gitlab \
+#   --restart always \
+#   --volume $GITLAB_HOME/config:/etc/gitlab \
+#   --volume $GITLAB_HOME/logs:/var/log/gitlab \
+#   --volume $GITLAB_HOME/data:/var/opt/gitlab \
+#   --shm-size 256m \
+#   gitlab/gitlab-ee:latest
 # sudo docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
