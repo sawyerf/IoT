@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Server Worker
-curl -sfL https://get.k3s.io | K3S_URL=https://192.168.1.197:6443 K3S_TOKEN=`cat /vagrant_shared/node-token` sh -s - --flannel-iface=eth1
+curl -sfL https://get.k3s.io | sh -s - server --flannel-iface=enp0s3
 # Install docker
 apt update
 yes | apt install \
@@ -15,6 +15,11 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 apt update
 yes | apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 service docker start
+# Run Gitlab 
+kubectl apply -f deployment.yml
+kubectl exec deployment/gitlab -- grep 'Password:' /etc/gitlab/initial_root_password
+
+
 # Install gitlab
 # export GITLAB_HOME=/srv/gitlab
 # mkdir -p $GITLAB_HOME
