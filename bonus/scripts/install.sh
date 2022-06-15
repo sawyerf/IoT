@@ -17,6 +17,8 @@ yes | apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 service docker start
 # Run Gitlab 
 kubectl apply -f deployment.yml
+kubectl exec deployment/gitlab -- grep 'Password:' /etc/gitlab/initial_root_password
+
 
 # Install gitlab
 # export GITLAB_HOME=/srv/gitlab
