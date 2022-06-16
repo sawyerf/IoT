@@ -11,4 +11,4 @@ sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo systemctl start docker
 # Run Gitlab 
 sudo /usr/local/bin/kubectl apply -f /vagrant/confs/deployment.yml
-sudo /usr/local/bin/kubectl exec deployment/gitlab -- grep 'Password:' /etc/gitlab/initial_root_password
+# sudo /usr/local/bin/kubectl exec deployment/gitlab -- grep 'Password:' /etc/gitlab/initial_root_password
