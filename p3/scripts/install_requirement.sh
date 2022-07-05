@@ -10,7 +10,7 @@ apt install -y git
 echo Install curl
 apt install -y curl
 echo Install k3s
-curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode K3S_KUBECONFIG_MODE=664 --service-node-port-range 8880-30000
+curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode K3S_KUBECONFIG_MODE=664 --service-node-port-range 8880-32767 
 echo Install k3d
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 echo Install docker

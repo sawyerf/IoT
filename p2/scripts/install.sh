@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sudo yum install -y net-tools
 sudo curl -sfL https://get.k3s.io | sh -s - server --write-kubeconfig-mode K3S_KUBECONFIG_MODE=644 --flannel-iface=eth1
 echo "alias k='sudo /usr/local/bin/kubectl'" >> /home/vagrant/.bashrc
 sudo /usr/local/bin/kubectl create configmap app1 --from-file /vagrant/confs/app1/index.html
